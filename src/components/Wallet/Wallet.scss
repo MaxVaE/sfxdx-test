@@ -1,0 +1,40 @@
+.wallet {
+  &__account {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 11px 12px;
+    background-color: $color-white;
+  }
+
+  &__address {
+    margin: 0 8px;
+    font-family: Manrope, sans-serif;
+    font-size: 12px;
+    color: $color-accent1-primary;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  &__copy {
+    border: none;
+    padding: 0;
+    height: 16px;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__button {
+    padding: 11px 12px;
+  }
+
+  @include tablet {
+    width: auto;
+  }
+}

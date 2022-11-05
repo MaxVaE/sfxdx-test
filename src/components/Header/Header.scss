@@ -1,0 +1,35 @@
+.header {
+  border: none;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 20px;
+
+    @include desktop {
+      margin: 26px auto;
+      max-width: 1300px;
+    }
+  }
+
+  &__pacifier {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__wallet {
+    margin-left: 60px;
+
+    @include tablet {
+      margin-left: 0;
+    }
+  }
+
+  @include tablet {
+    border-bottom: 1px solid $color-stroke;
+  }
+}

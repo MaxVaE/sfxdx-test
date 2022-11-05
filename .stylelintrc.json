@@ -1,5 +1,5 @@
 {
-	"extends": "stylelint-config-standard",
+	"extends": "stylelint-config-standard-scss",
 	"customSyntax": "postcss-scss",
 	"plugins": [
 		"stylelint-scss",
@@ -11,6 +11,8 @@
     "**/node_modules/**/*"
   ],
 	"rules": {
+		"color-function-notation": "legacy",
+		"alpha-value-notation": "number",
 		"keyframes-name-pattern": null,
 		"selector-class-pattern": null,
 		"declaration-block-no-duplicate-properties": [
@@ -356,3 +358,4 @@
 		]
 	}
 }
+ 
