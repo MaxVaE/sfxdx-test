@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import Web3 from 'web3';
 
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import { changeAccount } from '../store/account/accountSlice';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header onClick={loadAccount} />
+      <Footer />
     </div>
   );
 

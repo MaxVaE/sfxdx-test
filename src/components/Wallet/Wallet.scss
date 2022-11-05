@@ -1,4 +1,6 @@
 .wallet {
+  width: max-content;
+
   &__account {
     display: flex;
     align-items: center;
@@ -32,9 +34,5 @@
 
   &__button {
     padding: 11px 12px;
-  }
-
-  @include tablet {
-    width: auto;
   }
 }

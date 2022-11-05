@@ -1,8 +1,16 @@
+import clsx from 'clsx';
+
 import logo from '../../assets/logo.svg';
 
-function Logo() {
+type LogoProps = {
+  className?: string;
+};
+
+function Logo({
+  className,
+}: LogoProps) {
   return (
-    <img className="logo" src={logo} alt="logo" />
+    <img className={clsx('logo', className)} src={logo} alt="logo" />
   );
 }
 

@@ -2,10 +2,13 @@
   border: none;
 
   &__inner {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
     margin: 16px 20px;
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     @include desktop {
       margin: 26px auto;
@@ -13,19 +16,22 @@
     }
   }
 
-  &__pacifier {
-    display: none;
+  &__logo {
+    grid-column: 1;
 
     @include tablet {
       display: block;
+      margin: 0 auto;
+      grid-column: 2;
     }
   }
 
   &__wallet {
-    margin-left: 60px;
+    margin-left: auto;
+    grid-column: 2;
 
     @include tablet {
-      margin-left: 0;
+      grid-column: 3;
     }
   }
 

@@ -11,9 +11,7 @@ function Header({
   return (
     <header className="header">
       <div className="header__inner">
-        <div className="header__pacifier" />
-
-        <Logo />
+        <Logo className="header__logo" />
 
         <Wallet onClick={onClick} className="header__wallet" />
       </div>
