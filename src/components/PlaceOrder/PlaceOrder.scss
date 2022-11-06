@@ -1,0 +1,106 @@
+.place-order {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 38px;
+  padding-top: 34px;
+  padding-bottom: 30px;
+  background-color: $color-white;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+
+    @include screen-width($place-order-width) {
+      content: url("../../assets/block-a.png");
+    }
+  }
+
+  &__header {
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: Manrope, sans-serif;
+    font-size: 36px;
+    color: $color-text-primary;
+  }
+
+  &__limit {
+    margin-top: 24px;
+    margin-right: 8px;
+
+    @include tablet {
+      margin-top: 0;
+      margin-left: 28px;
+    }
+  }
+
+  &__order-type {
+    border: none;
+    padding: 7px 16px;
+    background-color: inherit;
+    cursor: pointer;
+
+    &--active {
+      border-bottom: 2px solid $color-accent1-primary;
+      border-radius: 2px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    input:nth-child(n) {
+      margin-top: 30px;
+    }
+
+    @include tablet-xl {
+      display: grid;
+      margin-top: 40px;
+      grid-gap: 30px 20px;
+      grid-template-columns: 500px 310px;
+      grid-template-rows: repeat(3, 1fr);
+
+      input:nth-child(n) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__field-expected-price {
+    &--placeholder {
+      color: $color-text-secondary;
+    }
+
+    @include tablet-xl {
+      min-width: 0;
+      max-width: 280px;
+      grid-row: 3;
+    }
+  }
+
+  &__button {
+    min-width: 295px;
+
+    @include screen-width($place-order-width) {
+      min-width: 0;
+    }
+  }
+
+  @include screen-width($place-order-width) {
+    align-items: flex-start;
+    padding: 34px 0;
+    padding-right: 110px;
+    padding-left: 30px;
+  }
+}

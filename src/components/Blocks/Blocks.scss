@@ -1,0 +1,29 @@
+.blocks {
+  padding: 0 20px;
+  padding-top: 30px;
+  padding-bottom: 90px;
+
+  @include desktop {
+    display: grid;
+    margin: 0 auto;
+    padding-top: 44px;
+    padding-bottom: 86px;
+    max-width: 1300px;
+    grid-gap: 20px;
+    grid-template-columns: 970px 310px;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.block-b {
+  margin: 20px 0;
+
+  @include desktop {
+    margin: 0;
+  }
+}
+
+.block-c {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}

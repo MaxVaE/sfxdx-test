@@ -1,0 +1,46 @@
+.switch {
+  display: block;
+  margin-top: 30px;
+  border-radius: 8px;
+  padding: 12px 4px;
+  max-width: max-content;
+  background: $color-bg-light;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  &__buy {
+    margin-right: 8px;
+
+    &--active {
+      background-color: $color-accent1-primary;
+    }
+  }
+
+  &__sell {
+    &--active {
+      background-color: $color-error;
+    }
+  }
+
+  &__buy,
+  &__sell {
+    border-radius: 8px;
+    padding: 8px 60px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    color: $color-text-secondary;
+
+    &--active {
+      color: $color-white;
+    }
+  }
+
+  @include desktop {
+    margin-top: 40px;
+  }
+}

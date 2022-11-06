@@ -1,0 +1,33 @@
+.input {
+  border: 1px solid $color-stroke;
+  border-radius: 8px;
+  padding: 13px 0;
+  padding-left: 16px;
+  min-width: 295px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: $color-text-primary;
+  background-color: $color-bg-light;
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px $color-focus;
+  }
+
+  &[type="number"] {
+    appearance: textfield;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+}

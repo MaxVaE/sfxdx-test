@@ -11,8 +11,24 @@
   background-color: $color-accent1-primary;
   cursor: pointer;
 
+  &:disabled {
+    box-shadow: none;
+    color: $color-disabled-text;
+    background-color: $color-disabled-bg;
+    cursor: no-drop;
+  }
+
+  &:focus {
+    border-radius: 16px;
+    box-shadow: 0 0 0 2px $color-focus-btn;
+  }
+
   &:hover {
     opacity: 0.8;
+
+    &:disabled {
+      opacity: 1;
+    }
   }
 
   @include tablet {
