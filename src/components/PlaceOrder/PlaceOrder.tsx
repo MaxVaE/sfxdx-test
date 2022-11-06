@@ -53,7 +53,7 @@ function PlaceOrder() {
         <button
           onClick={() => {
             setIsLimit(false);
-            setNewOrder({ ...newOrder, orderType: 'market' });
+            setNewOrder({ ...newOrder, orderType: 'market', price: 0 });
           }}
           type="button"
           className={clsx('place-order__order-type', { 'place-order__order-type--active': !isLimit })}

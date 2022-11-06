@@ -1,4 +1,5 @@
 import MyOrders from '../MyOrders/MyOrders';
+import OrderBook from '../OrderBook/OrderBook';
 import PlaceOrder from '../PlaceOrder/PlaceOrder';
 
 function Blocks() {
@@ -6,7 +7,7 @@ function Blocks() {
     <div className="blocks">
       <PlaceOrder />
       <MyOrders />
-      <div className="block-c">block-c</div>
+      <OrderBook />
     </div>
   );
 }
