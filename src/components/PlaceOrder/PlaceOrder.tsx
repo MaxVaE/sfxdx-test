@@ -1,17 +1,10 @@
 import clsx from 'clsx';
 import { useMemo, useState } from 'react';
+
+import { Order } from '../../types/order';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Switch from '../Switch/Switch';
-
-type Order = {
-  tokenA: string;
-  tokenB: string;
-  orderType: 'limit' | 'market';
-  orderSide: 'buy' | 'sell';
-  amount: number;
-  price?: number;
-};
 
 const INIT_ORDER: Order = {
   tokenA: '',
@@ -44,7 +37,7 @@ function PlaceOrder() {
   return (
     <div className="place-order">
       <div className="place-order__header">
-        <h2 className="place-order__title">Place the Order</h2>
+        <h2>Place the Order</h2>
 
         <button
           onClick={() => {

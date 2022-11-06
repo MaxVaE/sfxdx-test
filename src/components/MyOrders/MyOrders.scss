@@ -1,0 +1,32 @@
+.my-orders {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0;
+  border-radius: 16px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-left: 17px;
+  height: 362px;
+  min-width: 335px;
+  background-color: $color-white;
+
+  &__no-connect {
+    margin-top: 88px;
+    width: 100%;
+    font-family: Manrope, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: $color-text-secondary;
+  }
+
+  @include tablet-xl {
+    align-items: flex-start;
+    padding: 30px 0;
+    padding-left: 30px;
+  }
+
+  @include desktop {
+    margin: 0;
+  }
+}

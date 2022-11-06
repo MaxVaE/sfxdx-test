@@ -5,6 +5,13 @@ body {
   background-color: $color-bg-light;
 }
 
+h2 {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 36px;
+  color: $color-text-primary;
+}
+
 * {
   box-sizing: inherit;
 }
