@@ -71,19 +71,20 @@ function PlaceOrder() {
       />
 
       <div className="place-order__fields">
-        <Input onChange={(e) => setNewOrder({ ...newOrder, tokenA: e.target.value })} placeholder="Token A smart contract address" />
-        <Input onChange={(e) => setNewOrder({ ...newOrder, amount: Number(e.target.value) })} placeholder="Token A amount" type="number" />
-        <Input onChange={(e) => setNewOrder({ ...newOrder, tokenB: e.target.value })} placeholder="Token B smart contract address" />
+        <Input id="token-a" onChange={(e) => setNewOrder({ ...newOrder, tokenA: e.target.value })} placeholder="Token A smart contract address" />
+        <Input id="amount" onChange={(e) => setNewOrder({ ...newOrder, amount: Number(e.target.value) })} placeholder="Token A amount" type="number" />
+        <Input id="token-b" onChange={(e) => setNewOrder({ ...newOrder, tokenB: e.target.value })} placeholder="Token B smart contract address" />
         {
           isLimit && (
             <Input
+              id="price"
               onChange={(e) => setNewOrder({ ...newOrder, price: Number(e.target.value) })}
               placeholder="Limit price (in Token B)"
               type="number"
             />
           )
         }
-        <span className={clsx('input place-order__field-expected-price', { 'place-order__field-expected-price--placeholder': !newOrder.price })}>
+        <span className={clsx('place-order__field-expected-price', { 'place-order__field-expected-price--placeholder': !newOrder.price })}>
           {newOrder.price ? `${newOrder.price * newOrder.amount} Token B` : 'Expected order price'}
         </span>
       </div>

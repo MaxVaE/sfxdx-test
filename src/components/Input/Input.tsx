@@ -5,10 +5,15 @@ type InputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLI
 
 function Input({
   className,
+  placeholder,
+  id,
   ...props
 }: InputProps) {
   return (
-    <input className={clsx('input', className)} {...props} />
+    <div className="input">
+      <input id={id} placeholder=" " className={clsx('input__control', className)} {...props} />
+      <label htmlFor={id} className="input__label">{placeholder}</label>
+    </div>
   );
 }
 

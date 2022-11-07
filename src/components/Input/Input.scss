@@ -1,33 +1,54 @@
 .input {
-  border: 1px solid $color-stroke;
-  border-radius: 8px;
-  padding: 13px 0;
-  padding-left: 16px;
+  $this: &;
+
+  position: relative;
   min-width: 295px;
   font-family: Inter, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
-  color: $color-text-primary;
-  background-color: $color-bg-light;
 
-  &::placeholder {
+  &__control {
+    border: 1px solid $color-stroke;
+    border-radius: 8px;
+    padding: 13px 0;
+    padding-left: 16px;
+    width: 100%;
+    color: $color-text-primary;
+    background-color: $color-bg-light;
+
+    &:focus {
+      outline: none;
+      border-radius: 16px;
+      box-shadow: 0 0 0 1px $color-focus;
+    }
+
+    &:not(:placeholder-shown),
+    &:focus {
+      padding-top: 26px;
+      padding-bottom: 6px;
+
+      ~ #{$this}__label {
+        top: 6px;
+        font-size: 12px;
+      }
+    }
+
+    &[type="number"] {
+      appearance: textfield;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 16px;
+    top: 13px;
     color: $color-text-secondary;
-  }
-
-  &:focus {
-    outline: none;
-    border-radius: 16px;
-    box-shadow: 0 0 0 1px $color-focus;
-  }
-
-  &[type="number"] {
-    appearance: textfield;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    margin: 0;
-    appearance: none;
   }
 }
