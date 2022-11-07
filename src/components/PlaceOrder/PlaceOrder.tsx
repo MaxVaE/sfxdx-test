@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useMemo, useState } from 'react';
 
+// import { createOrder } from '../../common/api/queries';
 import { Order } from '../../types/order';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -11,8 +12,8 @@ const INIT_ORDER: Order = {
   tokenB: '',
   orderType: 'limit',
   orderSide: 'buy',
-  amount: 0,
-  price: 0,
+  amountA: 0,
+  amountB: 0,
 };
 
 function PlaceOrder() {
@@ -53,7 +54,7 @@ function PlaceOrder() {
         <button
           onClick={() => {
             setIsLimit(false);
-            setNewOrder({ ...newOrder, orderType: 'market', price: 0 });
+            setNewOrder({ ...newOrder, orderType: 'market', amountB: 0 });
           }}
           type="button"
           className={clsx('place-order__order-type', { 'place-order__order-type--active': !isLimit })}
@@ -72,24 +73,30 @@ function PlaceOrder() {
 
       <div className="place-order__fields">
         <Input id="token-a" onChange={(e) => setNewOrder({ ...newOrder, tokenA: e.target.value })} placeholder="Token A smart contract address" />
-        <Input id="amount" onChange={(e) => setNewOrder({ ...newOrder, amount: Number(e.target.value) })} placeholder="Token A amount" type="number" />
+        <Input id="amount" onChange={(e) => setNewOrder({ ...newOrder, amountA: Number(e.target.value) })} placeholder="Token A amount" type="number" />
         <Input id="token-b" onChange={(e) => setNewOrder({ ...newOrder, tokenB: e.target.value })} placeholder="Token B smart contract address" />
         {
           isLimit && (
             <Input
               id="price"
-              onChange={(e) => setNewOrder({ ...newOrder, price: Number(e.target.value) })}
+              onChange={(e) => setNewOrder({ ...newOrder, amountB: Number(e.target.value) })}
               placeholder="Limit price (in Token B)"
               type="number"
             />
           )
         }
-        <span className={clsx('place-order__field-expected-price', { 'place-order__field-expected-price--placeholder': !newOrder.price })}>
-          {newOrder.price ? `${newOrder.price * newOrder.amount} Token B` : 'Expected order price'}
+        <span className={clsx('place-order__field-expected-price', { 'place-order__field-expected-price--placeholder': !newOrder.amountB })}>
+          {newOrder.amountB ? `${newOrder.amountB * newOrder.amountA} Token B` : 'Expected order price'}
         </span>
       </div>
 
-      <Button disabled={disabled} className="place-order__button">Place the order</Button>
+      <Button
+        // onClick={() => createOrder(newOrder)}
+        disabled={disabled}
+        className="place-order__button"
+      >
+        Place the order
+      </Button>
     </div>
   );
 }

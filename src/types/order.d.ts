@@ -7,16 +7,15 @@ export type Order = {
   tokenB: string;
   orderType: OrderType;
   orderSide: OrderSide;
-  amount: number;
-  price?: number;
+  amountA: number;
+  amountB?: number;
 };
 
 export type MyOrder = {
-  id: number;
+  id: string;
   orderType: OrderType;
   orderSide: OrderSide;
-  orderStatus: OrderStatus;
-  countFilled: number;
-  amount: number;
-  price?: number;
+  amountLeftToFill: string;
+  amountA: string;
+  amountB?: string;
 };

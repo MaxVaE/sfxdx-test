@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 
-import { MyOrder, OrderStatus } from '../../types/order';
+import { checkStatusFilled, getOrderStatus, roundETH } from '../../common/myOrder';
+import { MyOrder } from '../../types/order';
 
 type TabletProps = {
   myOrders: MyOrder[];
@@ -25,20 +26,21 @@ function Tablet({
         id,
         orderType,
         orderSide,
-        orderStatus,
-        countFilled,
-        amount,
-        price,
+        amountLeftToFill,
+        amountA,
+        amountB = 0,
       }) => {
+        const maxAmount = Math.max(Number(amountA), Number(amountB));
+        const orderStatus = getOrderStatus(maxAmount, Number(amountLeftToFill));
         const checkedStatusFelled = checkStatusFilled(orderStatus);
 
         return (
           <div key={id} className="tablet__row">
             <span>{orderType}</span>
             <span>{orderSide}</span>
-            <span>{amount}</span>
-            <span>{price}</span>
-            <span>{countFilled}</span>
+            <span>{roundETH(amountA)}</span>
+            <span>{roundETH(amountB)}</span>
+            <span>{roundETH(amountLeftToFill)}</span>
 
             <div className={`tablet__status tablet__status--${orderStatus}`}>{orderStatus}</div>
 
@@ -54,10 +56,6 @@ function Tablet({
       })}
     </div>
   );
-
-  function checkStatusFilled(status: OrderStatus) {
-    return status === 'filled';
-  }
 }
 
 export default Tablet;
