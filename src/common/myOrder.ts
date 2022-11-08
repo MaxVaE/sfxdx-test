@@ -17,5 +17,20 @@ export function checkStatusFilled(status: OrderStatus) {
 }
 
 export function roundETH(amount: string | number) {
-  return (Number(amount) * 10e-18).toFixed(0);
+  const value = Number(amount) / 10e18;
+
+  if (value >= 1000) {
+    return value.toFixed(0);
+  }
+  if (value >= 100) {
+    return value.toFixed(1);
+  }
+  if (value >= 10) {
+    return value.toFixed(2);
+  }
+  if (value >= 1) {
+    return value.toFixed(3);
+  }
+
+  return value.toFixed(4);
 }

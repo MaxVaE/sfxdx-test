@@ -18,4 +18,5 @@ export type MyOrder = {
   amountLeftToFill: string;
   amountA: string;
   amountB?: string;
+  isCanceled: boolean;
 };

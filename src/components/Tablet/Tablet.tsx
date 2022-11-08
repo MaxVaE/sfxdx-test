@@ -1,6 +1,9 @@
 import { clsx } from 'clsx';
+import { useSelector } from 'react-redux';
 
 import { checkStatusFilled, getOrderStatus, roundETH } from '../../common/myOrder';
+import { cancelOrder } from '../../common/cancelOrder';
+import { RootState } from '../../store/store';
 import { MyOrder } from '../../types/order';
 
 type TabletProps = {
@@ -10,6 +13,8 @@ type TabletProps = {
 function Tablet({
   myOrders,
 }: TabletProps) {
+  const account = useSelector((state: RootState) => state.account.value);
+
   return (
     <div className="tablet">
       <div className="tablet__header">
@@ -22,13 +27,14 @@ function Tablet({
         <span>cancel</span>
       </div>
 
-      {myOrders.map(({
+      {myOrders && myOrders.map(({
         id,
         orderType,
         orderSide,
         amountLeftToFill,
         amountA,
         amountB = 0,
+        isCanceled,
       }) => {
         const maxAmount = Math.max(Number(amountA), Number(amountB));
         const orderStatus = getOrderStatus(maxAmount, Number(amountLeftToFill));
@@ -45,11 +51,12 @@ function Tablet({
             <div className={`tablet__status tablet__status--${orderStatus}`}>{orderStatus}</div>
 
             <button
+              onClick={() => cancelOrder(id, account)}
               disabled={checkedStatusFelled}
               className={clsx('tablet__button', { 'tablet__button--cancel': !checkedStatusFelled })}
               type="button"
             >
-              {checkedStatusFelled ? 'N/A' : 'Cancel'}
+              {checkedStatusFelled || isCanceled ? 'N/A' : 'Cancel'}
             </button>
           </div>
         );

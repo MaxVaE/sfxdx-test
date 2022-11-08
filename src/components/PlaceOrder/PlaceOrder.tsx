@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-// import { createOrder } from '../../common/api/queries';
+import { createOrder } from '../../common/createOrder';
+import { RootState } from '../../store/store';
 import { Order } from '../../types/order';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -20,6 +22,8 @@ function PlaceOrder() {
   const [isLimit, setIsLimit] = useState(true);
   const [isBuy, setIsBuy] = useState(true);
   const [newOrder, setNewOrder] = useState<Order>(INIT_ORDER);
+
+  const account = useSelector((state: RootState) => state.account.value);
 
   const disabled = useMemo(() => {
     const checkedFields = Object.entries(newOrder).filter(([key, value]) => {
@@ -91,7 +95,7 @@ function PlaceOrder() {
       </div>
 
       <Button
-        // onClick={() => createOrder(newOrder)}
+        onClick={() => createOrder(newOrder, account)}
         disabled={disabled}
         className="place-order__button"
       >
