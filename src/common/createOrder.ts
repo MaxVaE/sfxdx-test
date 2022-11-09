@@ -6,7 +6,7 @@ import { ADDRESS } from './const';
 import { matchedOrderIds } from './api/queries';
 
 export async function createOrder(newOrder: Order, address: string) {
-  if (!window.ethereum) {
+  if (!window.ethereum || !!address) {
     return null;
   }
 

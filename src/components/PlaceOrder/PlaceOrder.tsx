@@ -90,12 +90,12 @@ function PlaceOrder() {
           )
         }
         <span className={clsx('place-order__field-expected-price', { 'place-order__field-expected-price--placeholder': !newOrder.amountB })}>
-          {newOrder.amountB ? `${newOrder.amountB * newOrder.amountA} Token B` : 'Expected order price'}
+          {newOrder.amountB ? `${newOrder.amountB * newOrder.amountA} Token ${isBuy ? 'B' : 'A'}` : 'Expected order price'}
         </span>
       </div>
 
       <Button
-        onClick={() => createOrder(newOrder, account)}
+        onClick={handleClick}
         disabled={disabled}
         className="place-order__button"
       >
@@ -103,6 +103,24 @@ function PlaceOrder() {
       </Button>
     </div>
   );
+
+  function handleClick() {
+    if (isBuy) {
+      createOrder(newOrder, account);
+
+      return;
+    }
+
+    const {
+      tokenA, amountA, tokenB, amountB = 0,
+    } = newOrder;
+
+    const order: Order = {
+      ...newOrder, tokenA: tokenB, amountA: amountB, tokenB: tokenA, amountB: amountA,
+    };
+
+    createOrder(order, account);
+  }
 }
 
 export default PlaceOrder;
