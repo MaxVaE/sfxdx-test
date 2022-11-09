@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import abi from './abi';
 import { Order } from '../types/order';
 import { ADDRESS } from './const';
+import { matchedOrderIds } from './api/queries';
 
 export async function createOrder(newOrder: Order, address: string) {
   if (!window.ethereum) {
@@ -21,9 +22,10 @@ export async function createOrder(newOrder: Order, address: string) {
   const valueB = BigInt(amountB * 10e18);
 
   if (orderType === 'market') {
-    // ToDo: add get matchedOrderIds
+    const orderIds = await matchedOrderIds();
+
     transaction = contract.methods.matchOrders(
-      // uint256[] calldata matchedOrderIds,
+      orderIds,
       tokenA,
       tokenB,
       valueA,

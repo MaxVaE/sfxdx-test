@@ -1,7 +1,8 @@
 .tablet {
-  overflow-x: auto;
+  overflow: scroll;
   margin-top: 30px;
   width: 100%;
+  min-height: 246px;
   font-family: Inter, sans-serif;
 
   &__header {
