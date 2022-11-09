@@ -4,9 +4,10 @@ import Web3 from 'web3';
 
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import { changeAccount } from '../store/reducers/accountSlice';
 import Blocks from '../components/Blocks/Blocks';
+import Message from '../components/Message/Message';
 import { getIsTestNet } from '../common/getIsTestNet';
+import { changeAccount } from '../store/reducers/accountSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>{message}</div>
+      <Message message={message} changeMessage={setMessage} />
 
       <Header onClick={loadAccount} />
 
@@ -67,7 +68,7 @@ function App() {
     setMessage('');
 
     if (!isTestNet) {
-      setMessage('Change net to goerli');
+      setMessage('Change net to test net');
     }
   }
 }
